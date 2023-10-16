@@ -50,19 +50,19 @@ class Board:
 if __name__ == "__main__":
     board = Board()
 
-while True:
     while True:
-        playersInput = int(input("Gebe die Nummer ein: "))
-        if not board.moveValid(playersInput):
-            print("Invalid move. Try again.")
-        else:
+        while True:
+            playersInput = int(input("Gebe die Nummer ein: "))
+            if not board.moveValid(playersInput):
+                print("Invalid move. Try again.")
+            else:
+                break
+
+        board.mark(playersInput)
+        print(board)
+
+        if board.win():
             break
 
-    board.mark(playersInput)
-    print(board)
+        board.symbol.changePlayer()
 
-    if board.win():
-        break
-
-    board.symbol.changePlayer()
-#
